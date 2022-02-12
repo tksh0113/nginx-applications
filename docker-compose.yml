@@ -14,3 +14,4 @@ services:
         image: php:8-fpm
         volumes:
             - ./src:/var/www/html
+            - ./docker/php/zzz-www.conf:/usr/local/etc/php-fpm.d/zzz-www.conf
