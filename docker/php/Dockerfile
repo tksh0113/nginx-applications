@@ -2,7 +2,7 @@ FROM php:8-fpm
 
 
 RUN apt update \
-  && apt install -y zlib1g-dev libzip-dev procps \
+  && apt install -y zlib1g-dev libzip-dev procps vim \
   && docker-php-ext-install zip mysqli pdo pdo_mysql \
   && pecl install xdebug \
   && docker-php-ext-enable xdebug
@@ -20,13 +20,6 @@ COPY ./docker/php/php-fpm.d/ /usr/local/etc/php-fpm.d/
 
 WORKDIR /var/www/html
 
-RUN useradd -m -s /bin/sh -u 1001 nginx
+RUN useradd -m -s /bin/bash -u 1001 nginx_docker
 
 COPY ./src/ ./
-
-RUN chown -R nginx:nginx /var/www/html \
-    && chown -R nginx:nginx /var/run/ \
-    && chown -R nginx:nginx /var/log/ \
-    && chown -R nginx:nginx /usr/local/etc/php-fpm.d/
-
-# USER nginx
