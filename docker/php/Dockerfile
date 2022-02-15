@@ -2,7 +2,7 @@ FROM php:8-fpm
 
 RUN apt update \
     && apt install -y zlib1g-dev libzip-dev procps vim \
-    && docker-php-ext-install zip mysqli pdo pdo_mysql \
+    && docker-php-ext-install zip \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug
 
@@ -15,7 +15,5 @@ RUN mkdir /var/run/php-fpm
 RUN chown -R www-user:www-user /var/www/ /var/run/php-fpm /usr/local/etc/php-fpm.d/
 
 WORKDIR /var/www/html
-
-COPY ./src/ ./
 
 USER www-user
