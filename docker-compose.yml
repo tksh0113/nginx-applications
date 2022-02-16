@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-    web:
+    nginx:
         build:
             context: .
             dockerfile: ./docker/nginx/Dockerfile
