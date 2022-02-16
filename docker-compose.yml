@@ -3,8 +3,8 @@ version: "3.9"
 services:
     nginx:
         build:
-            context: .
-            dockerfile: ./docker/nginx/Dockerfile
+            context: ./docker/nginx/
+            dockerfile: Dockerfile
         ports:
             - "8080:8080"
             - "8081:8081"
