@@ -12,10 +12,10 @@ services:
             - ./src:/var/www/html
         depends_on:
             - php-fpm
-    app:
+    php-fpm:
         build:
             context: .
-            dockerfile: ./docker/php/Dockerfile
+            dockerfile: ./docker/php-fpm/Dockerfile
         volumes:
             - php-fpm-socket:/var/run/php-fpm
             - ./src:/var/www/html
