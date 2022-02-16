@@ -6,8 +6,8 @@ RUN apt update \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug
 
-COPY ./docker/php/php.ini /usr/local/etc/php/
-COPY ./docker/php/php-fpm.d/ /usr/local/etc/php-fpm.d/
+COPY ./php.ini /usr/local/etc/php/
+COPY ./php-fpm.d/ /usr/local/etc/php-fpm.d/
 
 RUN useradd -m -s /bin/sh -u 1001 www-user
 

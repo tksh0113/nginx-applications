@@ -14,8 +14,8 @@ services:
             - php-fpm
     php-fpm:
         build:
-            context: .
-            dockerfile: ./docker/php-fpm/Dockerfile
+            context: ./docker/php-fpm/
+            dockerfile: Dockerfile
         volumes:
             - php-fpm-socket:/var/run/php-fpm
             - ./src:/var/www/html
