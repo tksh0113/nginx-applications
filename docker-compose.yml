@@ -10,6 +10,7 @@ services:
             - "8081:8081"
         volumes:
             - php-fpm-socket:/var/run/php-fpm
+            - ./docker/php-fpm/src:/var/www/html
         depends_on:
             - php-fpm
     php-fpm:
@@ -18,7 +19,7 @@ services:
             dockerfile: Dockerfile
         volumes:
             - php-fpm-socket:/var/run/php-fpm
-            - ./src:/var/www/html
+            - ./docker/php-fpm/src:/var/www/html
 
 volumes:
     php-fpm-socket:
