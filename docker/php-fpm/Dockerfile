@@ -2,9 +2,7 @@ FROM php:8-fpm
 
 RUN apt update \
     && apt install -y zlib1g-dev libzip-dev unzip procps vim \
-    && docker-php-ext-install zip \
-    && pecl install xdebug \
-    && docker-php-ext-enable xdebug
+    && docker-php-ext-install zip
 
 COPY ./php.ini /usr/local/etc/php/
 COPY ./php-fpm.d/ /usr/local/etc/php-fpm.d/
