@@ -8,9 +8,11 @@ services:
         ports:
             - "8080:8080"
             - "8081:8081"
+            - "8082:8082"
         volumes:
             - php-fpm-socket:/var/run/php-fpm
             - ./docker/php-fpm:/var/www/html
+            - python-uwsgi-socket:/var/run/uwsgi
         depends_on:
             - php-fpm
     php-fpm:
@@ -20,6 +22,16 @@ services:
         volumes:
             - php-fpm-socket:/var/run/php-fpm
             - ./docker/php-fpm:/var/www/html
-
+    python-uwsgi:
+        build:
+            context: ./docker/python-uwsgi/
+            dockerfile: Dockerfile
+        ports:
+            - "9090:9090"
+            - "9091:9091"
+        volumes:
+            - python-uwsgi-socket:/var/run/uwsgi
+            - ./docker/python-uwsgi:/home/uwsgi
 volumes:
     php-fpm-socket:
+    python-uwsgi-socket:
